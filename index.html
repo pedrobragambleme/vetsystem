@@ -14,22 +14,22 @@
         <p>Sistema de gerenciamento veterinário</p>
 
         <nav>
-            <a href="#">Início</a>
-            <a href="#">Animais</a>
-            <a href="#">Cadastrar Animal</a>
-            <a href="#">Clínica</a>
+            <a href="#inicio">Início</a>
+            <a href="#animais">Animais</a>
+            <a href="#cadastrar-animal">Cadastrar Animal</a>
+            <a href="#clinica">Clínica</a>
         </nav>
     </header>
 
     <main>
-        <section>
+        <section id="inicio">
             <h2>Bem-vindo ao VetSystem</h2>
             <p>
                 Sistema para gerenciamento de animais, prontuários,
                 histórico de atendimentos e informações veterinárias.
             </p>
         </section>
-        <section>
+        <section id="cadastrar-animal">
             <h2>Cadastrar Animal</h2>
 
             <form>
@@ -65,7 +65,7 @@
                 <button type="submit">Cadastrar Animal</button>
             </form>
         </section>
-        <section>
+        <section id="animais">
             <h2>Animais Cadastrados</h2>
 
             <form>
@@ -153,6 +153,22 @@
                 <button type="button">Editar</button>
                 <button type="button">Excluir</button>
             </article>
+        </section>
+        <section id="clinica">
+            <h2>Clínica</h2>
+
+            <h3>Informações da Clínica</h3>
+
+            <p><strong>Nome:</strong> Clínica Veterinária VetSystem</p>
+            <p><strong>Endereço:</strong> Avenida Principal, 1000</p>
+            <p><strong>Telefone:</strong> (31) 3333-3333</p>
+            <p><strong>Horário de atendimento:</strong> Segunda a sexta, das 8h às 18h</p>
+
+            <h3>Localização</h3>
+            <p>
+                Nesta área será exibido o mapa com a localização da clínica
+                e serviços veterinários próximos.
+            </p>
         </section>
     </main>
 
