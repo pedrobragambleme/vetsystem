@@ -65,6 +65,71 @@
                 <button type="submit">Cadastrar Animal</button>
             </form>
         </section>
+        <section>
+            <h2>Animais Cadastrados</h2>
+
+            <form>
+                <label for="pesquisa">Pesquisar:</label>
+                <input type="search" id="pesquisa" name="pesquisa" placeholder="Nome do animal ou tutor">
+
+                <label for="filtro-especie">Filtrar por espécie:</label>
+                <select id="filtro-especie" name="filtro-especie">
+                    <option value="todos">Todos</option>
+                    <option value="cachorro">Cachorro</option>
+                    <option value="gato">Gato</option>
+                    <option value="outro">Outro</option>
+                </select>
+
+                <label for="ordenacao">Ordenar por:</label>
+                <select id="ordenacao" name="ordenacao">
+                    <option value="nome">Nome</option>
+                    <option value="idade">Idade</option>
+                </select>
+
+                <button type="button">Pesquisar</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Espécie</th>
+                        <th>Raça</th>
+                        <th>Idade</th>
+                        <th>Tutor</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Thor</td>
+                        <td>Cachorro</td>
+                        <td>Golden Retriever</td>
+                        <td>5 anos</td>
+                        <td>João Silva</td>
+                        <td>
+                            <button type="button">Ver detalhes</button>
+                            <button type="button">Editar</button>
+                            <button type="button">Excluir</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Luna</td>
+                        <td>Gato</td>
+                        <td>Siamês</td>
+                        <td>3 anos</td>
+                        <td>Maria Souza</td>
+                        <td>
+                            <button type="button">Ver detalhes</button>
+                            <button type="button">Editar</button>
+                            <button type="button">Excluir</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
     </main>
 
     <footer>
