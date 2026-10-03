@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VetSystem</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>VetSystem</h1>
+        <p>Sistema de gerenciamento veterinário</p>
+
+        <nav>
+            <a href="#">Início</a>
+            <a href="#">Animais</a>
+            <a href="#">Cadastrar Animal</a>
+            <a href="#">Clínica</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Bem-vindo ao VetSystem</h2>
+            <p>
+                Sistema para gerenciamento de animais, prontuários,
+                histórico de atendimentos e informações veterinárias.
+            </p>
+        </section>
+        <section>
+            <h2>Cadastrar Animal</h2>
+
+            <form>
+                <label for="nome">Nome do animal:</label>
+                <input type="text" id="nome" name="nome">
+
+                <label for="especie">Espécie:</label>
+                <select id="especie" name="especie">
+                    <option value="">Selecione</option>
+                    <option value="cachorro">Cachorro</option>
+                    <option value="gato">Gato</option>
+                    <option value="outro">Outro</option>
+                </select>
+
+                <label for="raca">Raça:</label>
+                <input type="text" id="raca" name="raca">
+
+                <label for="idade">Idade:</label>
+                <input type="number" id="idade" name="idade">
+
+                <label for="cor">Coloração:</label>
+                <input type="text" id="cor" name="cor">
+
+                <label for="tutor">Nome do tutor:</label>
+                <input type="text" id="tutor" name="tutor">
+
+                <label for="vacinas">Histórico vacinal:</label>
+                <textarea id="vacinas" name="vacinas"></textarea>
+
+                <label for="prontuario">Prontuário:</label>
+                <textarea id="prontuario" name="prontuario"></textarea>
+
+                <button type="submit">Cadastrar Animal</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>VetSystem - Sistema de Gerenciamento Veterinário</p>
+    </footer>
+
+</body>
+
+</html>
