@@ -12,6 +12,7 @@ body {
     line-height: 1.6;
 }
 
+/* Cabecalho e navegacao */
 header {
     background-color: #126b70;
     color: white;
@@ -42,7 +43,12 @@ nav a:hover {
     text-decoration: underline;
 }
 
+nav a:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 4px;
+}
 
+/* Conteudo principal */
 main {
     max-width: 1200px;
     margin: 30px auto;
@@ -64,6 +70,7 @@ section h2 {
     font-size: 24px;
 }
 
+/* Rodape */
 footer {
     background-color: #126b70;
     color: white;
@@ -71,6 +78,7 @@ footer {
     padding: 15px;
 }
 
+/* Formulario de cadastro */
 #cadastrar-animal form {
     display: grid;
     grid-template-columns: 180px minmax(0, 1fr);
@@ -128,6 +136,7 @@ footer {
     outline-offset: 3px;
 }
 
+/* Pesquisa, filtros e ordenacao */
 #animais form {
     display: flex;
     flex-wrap: wrap;
@@ -168,6 +177,12 @@ footer {
     background-color: #0e5559;
 }
 
+#animais form button:focus-visible {
+    outline: 3px solid #126b70;
+    outline-offset: 3px;
+}
+
+/* Tabela de animais */
 #animais table {
     width: 100%;
     border-collapse: collapse;
@@ -189,6 +204,7 @@ footer {
     background-color: #f3f7f6;
 }
 
+/* Botoes da tabela */
 #animais td button {
     padding: 8px 12px;
     margin: 3px;
@@ -208,6 +224,7 @@ footer {
     outline-offset: 2px;
 }
 
+/* Detalhes do animal */
 #detalhes article {
     background-color: #f8fbfa;
     padding: 20px;
@@ -249,6 +266,28 @@ footer {
 #detalhes button:focus-visible {
     outline: 3px solid #58b89c;
     outline-offset: 3px;
+}
+
+/* Mensagem informativa do sistema */
+.mensagem-sistema {
+    background-color: #e1f3ed;
+    color: #126b70;
+    padding: 12px;
+    border: 1px solid #58b89c;
+    border-radius: 6px;
+    margin-top: 15px;
+}
+
+/* Botoes de exclusao */
+#animais td .botao-excluir,
+#detalhes .botao-excluir {
+    background-color: #b42332;
+    color: white;
+}
+
+#animais td .botao-excluir:hover,
+#detalhes .botao-excluir:hover {
+    background-color: #8f1b27;
 }
 
 /* Responsividade para tablets e celulares */
@@ -298,34 +337,18 @@ footer {
         width: 100%;
     }
 
+    #animais table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    #animais th,
+    #animais td {
+        white-space: nowrap;
+    }
+
     #detalhes img {
         max-width: 100%;
     }
-}
-#animais table {
-    display: block;
-    max-width: 100%;
-    overflow-x: auto;
-}
-
-#animais th,
-#animais td {
-    white-space: nowrap;
-}
-.mensagem-sistema {
-    background-color: #e1f3ed;
-    color: #126b70;
-    padding: 12px;
-    border: 1px solid #58b89c;
-    border-radius: 6px;
-    margin-top: 15px;
-}#animais td .botao-excluir,
-#detalhes .botao-excluir {
-    background-color: #b42332;
-    color: white;
-}
-
-#animais td .botao-excluir:hover,
-#detalhes .botao-excluir:hover {
-    background-color: #8f1b27;
 }
