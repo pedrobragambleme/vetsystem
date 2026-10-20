@@ -70,3 +70,61 @@ footer {
     text-align: center;
     padding: 15px;
 }
+
+#cadastrar-animal form {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 15px;
+    align-items: center;
+}
+
+#cadastrar-animal label {
+    font-weight: bold;
+    color: #243746;
+}
+
+#cadastrar-animal input,
+#cadastrar-animal select,
+#cadastrar-animal textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #b8ccc8;
+    border-radius: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    background-color: white;
+}
+
+#cadastrar-animal textarea {
+    min-height: 90px;
+}
+
+#cadastrar-animal input:focus,
+#cadastrar-animal select:focus,
+#cadastrar-animal textarea:focus {
+    outline: 2px solid #126b70;
+    outline-offset: 2px;
+}
+
+
+#cadastrar-animal button {
+    grid-column: 2;
+    background-color: #126b70;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#cadastrar-animal button:hover {
+    background-color: #0e5559;
+}
+
+#cadastrar-animal button:focus-visible {
+    outline: 3px solid #58b89c;
+    outline-offset: 3px;
+}
