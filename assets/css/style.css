@@ -107,7 +107,6 @@ footer {
     outline-offset: 2px;
 }
 
-
 #cadastrar-animal button {
     grid-column: 2;
     background-color: #126b70;
@@ -125,6 +124,129 @@ footer {
 }
 
 #cadastrar-animal button:focus-visible {
+    outline: 3px solid #58b89c;
+    outline-offset: 3px;
+}
+
+#animais form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+#animais label {
+    font-weight: bold;
+}
+
+#animais input,
+#animais select {
+    padding: 10px;
+    border: 1px solid #b8ccc8;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: white;
+}
+
+#animais input:focus,
+#animais select:focus {
+    outline: 2px solid #126b70;
+    outline-offset: 2px;
+}
+
+#animais form button {
+    padding: 10px 20px;
+    background-color: #126b70;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#animais form button:hover {
+    background-color: #0e5559;
+}
+
+#animais table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#animais th,
+#animais td {
+    padding: 12px;
+    border-bottom: 1px solid #dce8e5;
+    text-align: left;
+}
+
+#animais th {
+    background-color: #126b70;
+    color: white;
+}
+
+#animais tbody tr:hover {
+    background-color: #f3f7f6;
+}
+
+#animais td button {
+    padding: 8px 12px;
+    margin: 3px;
+    border: none;
+    border-radius: 5px;
+    background-color: #126b70;
+    color: white;
+    cursor: pointer;
+}
+
+#animais td button:hover {
+    background-color: #0e5559;
+}
+
+#animais td button:focus-visible {
+    outline: 3px solid #58b89c;
+    outline-offset: 2px;
+}
+
+#detalhes article {
+    background-color: #f8fbfa;
+    padding: 20px;
+    border: 1px solid #dce8e5;
+    border-radius: 8px;
+}
+
+#detalhes h3 {
+    color: #126b70;
+    font-size: 22px;
+}
+
+#detalhes img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 10px;
+}
+
+#detalhes h4 {
+    color: #126b70;
+    margin-bottom: 5px;
+}
+
+#detalhes button {
+    background-color: #126b70;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#detalhes button:hover {
+    background-color: #0e5559;
+}
+
+#detalhes button:focus-visible {
     outline: 3px solid #58b89c;
     outline-offset: 3px;
 }
