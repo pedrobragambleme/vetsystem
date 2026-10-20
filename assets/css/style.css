@@ -250,3 +250,82 @@ footer {
     outline: 3px solid #58b89c;
     outline-offset: 3px;
 }
+
+/* Responsividade para tablets e celulares */
+@media (max-width: 768px) {
+
+    header {
+        padding: 20px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    main {
+        margin: 20px auto;
+        padding: 0 12px;
+    }
+
+    section {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    section h2 {
+        font-size: 21px;
+    }
+
+    #cadastrar-animal form {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    #cadastrar-animal button {
+        grid-column: 1;
+        width: 100%;
+    }
+
+    #animais form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #animais input,
+    #animais select,
+    #animais form button {
+        width: 100%;
+    }
+
+    #detalhes img {
+        max-width: 100%;
+    }
+}
+#animais table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+#animais th,
+#animais td {
+    white-space: nowrap;
+}
+.mensagem-sistema {
+    background-color: #e1f3ed;
+    color: #126b70;
+    padding: 12px;
+    border: 1px solid #58b89c;
+    border-radius: 6px;
+    margin-top: 15px;
+}#animais td .botao-excluir,
+#detalhes .botao-excluir {
+    background-color: #b42332;
+    color: white;
+}
+
+#animais td .botao-excluir:hover,
+#detalhes .botao-excluir:hover {
+    background-color: #8f1b27;
+}
