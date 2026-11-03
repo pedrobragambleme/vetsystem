@@ -34,29 +34,29 @@
         <section id="cadastrar-animal">
             <h2>Cadastrar Animal</h2>
 
-            <form>
+            <form id="form-cadastro">
                 <label for="nome">Nome do animal:</label>
-                <input type="text" id="nome" name="nome">
+                <input type="text" id="nome" name="nome" required>
 
                 <label for="especie">Espécie:</label>
-                <select id="especie" name="especie">
+                <select id="especie" name="especie" required>
                     <option value="">Selecione</option>
-                    <option value="cachorro">Cachorro</option>
-                    <option value="gato">Gato</option>
-                    <option value="outro">Outro</option>
+                    <option value="Cachorro">Cachorro</option>
+                    <option value="Gato">Gato</option>
+                    <option value="Outro">Outro</option>
                 </select>
 
                 <label for="raca">Raça:</label>
-                <input type="text" id="raca" name="raca">
+                <input type="text" id="raca" name="raca" required>
 
                 <label for="idade">Idade:</label>
-                <input type="number" id="idade" name="idade">
+                <input type="number" id="idade" name="idade" min="0" step="1" required>
 
                 <label for="cor">Coloração:</label>
                 <input type="text" id="cor" name="cor">
 
                 <label for="tutor">Nome do tutor:</label>
-                <input type="text" id="tutor" name="tutor">
+                <input type="text" id="tutor" name="tutor" required>
 
                 <label for="vacinas">Histórico vacinal:</label>
                 <textarea id="vacinas" name="vacinas"></textarea>
@@ -67,8 +67,8 @@
                 <button type="submit">Cadastrar Animal</button>
             </form>
 
-            <p class="mensagem-sistema">
-                As mensagens de cadastro e atualização dos animais serão exibidas aqui.
+            <p class="mensagem-sistema" id="mensagem" aria-live="polite">
+                Preencha o formulário para cadastrar um animal.
             </p>
         </section>
 
@@ -107,9 +107,9 @@
                         <th>Ações</th>
                     </tr>
                 </thead>
+
                 <tbody id="lista-animais">
                 </tbody>
-
             </table>
         </section>
 
