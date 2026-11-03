@@ -29,12 +29,58 @@ const formulario = document.getElementById("form-cadastro");
 const mensagem = document.getElementById("mensagem");
 const botaoCadastro = formulario.querySelector("button");
 
+const pesquisa = document.getElementById("pesquisa");
+const filtroEspecie = document.getElementById("filtro-especie");
+const ordenacao = document.getElementById("ordenacao");
+
 function listarAnimais() {
     const tabela = document.getElementById("lista-animais");
 
     tabela.innerHTML = "";
 
-    for (let animal of animais) {
+    const textoPesquisa = pesquisa.value.trim().toLowerCase();
+    const especieSelecionada = filtroEspecie.value;
+
+    let animaisFiltrados = animais.filter(function (animal) {
+        const nome = animal.nome.toLowerCase();
+        const tutor = animal.tutor.toLowerCase();
+        const especie = animal.especie.toLowerCase();
+
+        const correspondePesquisa =
+            nome.includes(textoPesquisa) ||
+            tutor.includes(textoPesquisa);
+
+        const correspondeEspecie =
+            especieSelecionada === "todos" ||
+            especie === especieSelecionada;
+
+        return correspondePesquisa && correspondeEspecie;
+    });
+
+    if (ordenacao.value === "nome") {
+        animaisFiltrados.sort(function (a, b) {
+            return a.nome.localeCompare(b.nome);
+        });
+    } else if (ordenacao.value === "idade") {
+        animaisFiltrados.sort(function (a, b) {
+            return a.idade - b.idade;
+        });
+    }
+
+    if (animaisFiltrados.length === 0) {
+        const linha = document.createElement("tr");
+        const coluna = document.createElement("td");
+
+        coluna.colSpan = 6;
+        coluna.textContent = "Nenhum animal encontrado.";
+
+        linha.appendChild(coluna);
+        tabela.appendChild(linha);
+
+        return;
+    }
+
+    for (let animal of animaisFiltrados) {
         const linha = document.createElement("tr");
 
         const dados = [
@@ -310,6 +356,19 @@ formulario.addEventListener("submit", function (evento) {
     listarAnimais();
     mostrarDetalhes(id);
 });
+
+pesquisa.addEventListener("input", listarAnimais);
+
+filtroEspecie.addEventListener("change", listarAnimais);
+
+ordenacao.addEventListener("change", listarAnimais);
+
+document.querySelector("#animais form").addEventListener("submit", function (evento) {
+    evento.preventDefault();
+    listarAnimais();
+});
+
+document.querySelector("#animais form button").addEventListener("click", listarAnimais);
 
 listarAnimais();
 mostrarDetalhes(1);
