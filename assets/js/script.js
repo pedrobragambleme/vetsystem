@@ -23,6 +23,12 @@ let animais = [
     }
 ];
 
+let idEmEdicao = null;
+
+const formulario = document.getElementById("form-cadastro");
+const mensagem = document.getElementById("mensagem");
+const botaoCadastro = formulario.querySelector("button");
+
 function listarAnimais() {
     const tabela = document.getElementById("lista-animais");
 
@@ -51,14 +57,26 @@ function listarAnimais() {
         botaoDetalhes.type = "button";
         botaoDetalhes.textContent = "Ver detalhes";
 
+        botaoDetalhes.addEventListener("click", function () {
+            mostrarDetalhes(animal.id, true);
+        });
+
         const botaoEditar = document.createElement("button");
         botaoEditar.type = "button";
         botaoEditar.textContent = "Editar";
+
+        botaoEditar.addEventListener("click", function () {
+            editarAnimal(animal.id);
+        });
 
         const botaoExcluir = document.createElement("button");
         botaoExcluir.type = "button";
         botaoExcluir.textContent = "Excluir";
         botaoExcluir.className = "botao-excluir";
+
+        botaoExcluir.addEventListener("click", function () {
+            excluirAnimal(animal.id);
+        });
 
         colunaAcoes.appendChild(botaoDetalhes);
         colunaAcoes.appendChild(botaoEditar);
@@ -69,8 +87,157 @@ function listarAnimais() {
     }
 }
 
-const formulario = document.getElementById("form-cadastro");
-const mensagem = document.getElementById("mensagem");
+function mostrarDetalhes(id, mover = false) {
+    const animal = animais.find(function (item) {
+        return item.id === id;
+    });
+
+    const artigo = document.querySelector("#detalhes article");
+    artigo.innerHTML = "";
+
+    if (!animal) {
+        const aviso = document.createElement("p");
+        aviso.textContent = "Nenhum animal selecionado.";
+        artigo.appendChild(aviso);
+        return;
+    }
+
+    const titulo = document.createElement("h3");
+    titulo.textContent = animal.nome;
+    artigo.appendChild(titulo);
+
+    if (animal.id === 1) {
+        const imagem = document.createElement("img");
+        imagem.src = "assets/img/thor.jpg";
+        imagem.alt = "Foto do cachorro Thor";
+        artigo.appendChild(imagem);
+    }
+
+    const campos = [
+        ["Espécie", animal.especie],
+        ["Raça", animal.raca],
+        ["Idade", animal.idade + " anos"],
+        ["Coloração", animal.cor],
+        ["Tutor", animal.tutor]
+    ];
+
+    for (let campo of campos) {
+        const paragrafo = document.createElement("p");
+        const destaque = document.createElement("strong");
+
+        destaque.textContent = campo[0] + ": ";
+        paragrafo.appendChild(destaque);
+        paragrafo.appendChild(document.createTextNode(campo[1]));
+
+        artigo.appendChild(paragrafo);
+    }
+
+    const tituloVacinas = document.createElement("h4");
+    tituloVacinas.textContent = "Histórico Vacinal";
+    artigo.appendChild(tituloVacinas);
+
+    const vacinas = document.createElement("p");
+    vacinas.textContent = animal.vacinas || "Não informado.";
+    artigo.appendChild(vacinas);
+
+    const tituloProntuario = document.createElement("h4");
+    tituloProntuario.textContent = "Prontuário";
+    artigo.appendChild(tituloProntuario);
+
+    const prontuario = document.createElement("p");
+    prontuario.textContent = animal.prontuario || "Não informado.";
+    artigo.appendChild(prontuario);
+
+    const botaoEditar = document.createElement("button");
+    botaoEditar.type = "button";
+    botaoEditar.textContent = "Editar";
+
+    botaoEditar.addEventListener("click", function () {
+        editarAnimal(animal.id);
+    });
+
+    const botaoExcluir = document.createElement("button");
+    botaoExcluir.type = "button";
+    botaoExcluir.textContent = "Excluir";
+    botaoExcluir.className = "botao-excluir";
+
+    botaoExcluir.addEventListener("click", function () {
+        excluirAnimal(animal.id);
+    });
+
+    artigo.appendChild(botaoEditar);
+    artigo.appendChild(botaoExcluir);
+
+    if (mover) {
+        document.getElementById("detalhes").scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+}
+
+function editarAnimal(id) {
+    const animal = animais.find(function (item) {
+        return item.id === id;
+    });
+
+    if (!animal) {
+        return;
+    }
+
+    idEmEdicao = animal.id;
+
+    document.getElementById("nome").value = animal.nome;
+    document.getElementById("especie").value = animal.especie;
+    document.getElementById("raca").value = animal.raca;
+    document.getElementById("idade").value = animal.idade;
+    document.getElementById("cor").value = animal.cor;
+    document.getElementById("tutor").value = animal.tutor;
+    document.getElementById("vacinas").value = animal.vacinas;
+    document.getElementById("prontuario").value = animal.prontuario;
+
+    botaoCadastro.textContent = "Salvar Alterações";
+    mensagem.textContent = "Altere os dados e clique em Salvar Alterações.";
+
+    document.getElementById("cadastrar-animal").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+function excluirAnimal(id) {
+    const animal = animais.find(function (item) {
+        return item.id === id;
+    });
+
+    if (!animal) {
+        return;
+    }
+
+    const confirmar = confirm("Deseja excluir " + animal.nome + "?");
+
+    if (!confirmar) {
+        return;
+    }
+
+    animais = animais.filter(function (item) {
+        return item.id !== id;
+    });
+
+    if (idEmEdicao === id) {
+        idEmEdicao = null;
+        formulario.reset();
+        botaoCadastro.textContent = "Cadastrar Animal";
+    }
+
+    listarAnimais();
+
+    if (animais.length > 0) {
+        mostrarDetalhes(animais[0].id);
+    } else {
+        mostrarDetalhes(null);
+    }
+
+    mensagem.textContent = "Animal excluído com sucesso!";
+}
 
 formulario.addEventListener("submit", function (evento) {
     evento.preventDefault();
@@ -97,8 +264,20 @@ formulario.addEventListener("submit", function (evento) {
         return;
     }
 
-    const novoAnimal = {
-        id: animais.length > 0 ? Math.max(...animais.map(animal => animal.id)) + 1 : 1,
+    let id = idEmEdicao;
+
+    if (id === null) {
+        id = 1;
+
+        for (let animal of animais) {
+            if (animal.id >= id) {
+                id = animal.id + 1;
+            }
+        }
+    }
+
+    const animalAtualizado = {
+        id: id,
         nome: nome,
         especie: especie,
         raca: raca,
@@ -109,13 +288,28 @@ formulario.addEventListener("submit", function (evento) {
         prontuario: prontuario
     };
 
-    animais.push(novoAnimal);
+    if (idEmEdicao === null) {
+        animais.push(animalAtualizado);
+        mensagem.textContent = "Animal cadastrado com sucesso!";
+    } else {
+        const indice = animais.findIndex(function (animal) {
+            return animal.id === idEmEdicao;
+        });
+
+        if (indice !== -1) {
+            animais[indice] = animalAtualizado;
+        }
+
+        mensagem.textContent = "Animal atualizado com sucesso!";
+    }
+
+    idEmEdicao = null;
+    botaoCadastro.textContent = "Cadastrar Animal";
+    formulario.reset();
 
     listarAnimais();
-
-    mensagem.textContent = "Animal cadastrado com sucesso!";
-
-    formulario.reset();
+    mostrarDetalhes(id);
 });
 
 listarAnimais();
+mostrarDetalhes(1);
