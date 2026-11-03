@@ -1,4 +1,3 @@
-
 * {
     box-sizing: border-box;
 }
@@ -13,6 +12,7 @@ body {
 }
 
 /* Cabecalho e navegacao */
+
 header {
     background-color: #126b70;
     color: white;
@@ -49,6 +49,7 @@ nav a:focus-visible {
 }
 
 /* Conteudo principal */
+
 main {
     max-width: 1200px;
     margin: 30px auto;
@@ -71,6 +72,7 @@ section h2 {
 }
 
 /* Rodape */
+
 footer {
     background-color: #126b70;
     color: white;
@@ -79,6 +81,7 @@ footer {
 }
 
 /* Formulario de cadastro */
+
 #cadastrar-animal form {
     display: grid;
     grid-template-columns: 180px minmax(0, 1fr);
@@ -132,11 +135,23 @@ footer {
 }
 
 #cadastrar-animal button:focus-visible {
-    outline: 3px solid #58b89c;
+    outline: 3px solid #126b70;
     outline-offset: 3px;
 }
 
+/* Modo de edicao */
+
+#cadastrar-animal.modo-edicao {
+    border: 2px solid #126b70;
+    background-color: #f0f8f6;
+}
+
+#cadastrar-animal.modo-edicao h2 {
+    color: #0e5559;
+}
+
 /* Pesquisa, filtros e ordenacao */
+
 #animais form {
     display: flex;
     flex-wrap: wrap;
@@ -183,6 +198,7 @@ footer {
 }
 
 /* Tabela de animais */
+
 #animais table {
     width: 100%;
     border-collapse: collapse;
@@ -205,6 +221,7 @@ footer {
 }
 
 /* Botoes da tabela */
+
 #animais td button {
     padding: 8px 12px;
     margin: 3px;
@@ -220,11 +237,12 @@ footer {
 }
 
 #animais td button:focus-visible {
-    outline: 3px solid #58b89c;
+    outline: 3px solid #126b70;
     outline-offset: 2px;
 }
 
 /* Detalhes do animal */
+
 #detalhes article {
     background-color: #f8fbfa;
     padding: 20px;
@@ -264,11 +282,12 @@ footer {
 }
 
 #detalhes button:focus-visible {
-    outline: 3px solid #58b89c;
+    outline: 3px solid #126b70;
     outline-offset: 3px;
 }
 
-/* Mensagem informativa do sistema */
+/* Mensagem do sistema */
+
 .mensagem-sistema {
     background-color: #e1f3ed;
     color: #126b70;
@@ -279,6 +298,7 @@ footer {
 }
 
 /* Botoes de exclusao */
+
 #animais td .botao-excluir,
 #detalhes .botao-excluir {
     background-color: #b42332;
@@ -290,7 +310,8 @@ footer {
     background-color: #8f1b27;
 }
 
-/* Responsividade para tablets e celulares */
+/* Responsividade */
+
 @media (max-width: 768px) {
 
     header {

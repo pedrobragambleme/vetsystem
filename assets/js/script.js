@@ -28,6 +28,8 @@ let idEmEdicao = null;
 const formulario = document.getElementById("form-cadastro");
 const mensagem = document.getElementById("mensagem");
 const botaoCadastro = formulario.querySelector("button");
+const secaoCadastro = document.getElementById("cadastrar-animal");
+const tituloCadastro = secaoCadastro.querySelector("h2");
 
 const pesquisa = document.getElementById("pesquisa");
 const filtroEspecie = document.getElementById("filtro-especie");
@@ -241,10 +243,13 @@ function editarAnimal(id) {
     document.getElementById("vacinas").value = animal.vacinas;
     document.getElementById("prontuario").value = animal.prontuario;
 
+    tituloCadastro.textContent = "Editar Animal";
+    secaoCadastro.classList.add("modo-edicao");
+
     botaoCadastro.textContent = "Salvar Alterações";
     mensagem.textContent = "Altere os dados e clique em Salvar Alterações.";
 
-    document.getElementById("cadastrar-animal").scrollIntoView({
+    secaoCadastro.scrollIntoView({
         behavior: "smooth"
     });
 }
@@ -272,6 +277,8 @@ function excluirAnimal(id) {
         idEmEdicao = null;
         formulario.reset();
         botaoCadastro.textContent = "Cadastrar Animal";
+        tituloCadastro.textContent = "Cadastrar Animal";
+        secaoCadastro.classList.remove("modo-edicao");
     }
 
     listarAnimais();
@@ -351,6 +358,9 @@ formulario.addEventListener("submit", function (evento) {
 
     idEmEdicao = null;
     botaoCadastro.textContent = "Cadastrar Animal";
+    tituloCadastro.textContent = "Cadastrar Animal";
+    secaoCadastro.classList.remove("modo-edicao");
+
     formulario.reset();
 
     listarAnimais();
