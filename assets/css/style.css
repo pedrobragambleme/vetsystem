@@ -1,3 +1,7 @@
+/* ========================================
+   CONFIGURACOES GERAIS
+======================================== */
+
 * {
     box-sizing: border-box;
 }
@@ -11,7 +15,9 @@ body {
     line-height: 1.6;
 }
 
-/* Cabecalho e navegacao */
+/* ========================================
+   CABECALHO E NAVEGACAO
+======================================== */
 
 header {
     background-color: #126b70;
@@ -30,6 +36,7 @@ header p {
 
 nav {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
@@ -48,7 +55,9 @@ nav a:focus-visible {
     outline-offset: 4px;
 }
 
-/* Conteudo principal */
+/* ========================================
+   CONTEUDO PRINCIPAL
+======================================== */
 
 main {
     max-width: 1200px;
@@ -71,7 +80,9 @@ section h2 {
     font-size: 24px;
 }
 
-/* Rodape */
+/* ========================================
+   RODAPE
+======================================== */
 
 footer {
     background-color: #126b70;
@@ -80,7 +91,9 @@ footer {
     padding: 15px;
 }
 
-/* Formulario de cadastro */
+/* ========================================
+   FORMULARIO DE CADASTRO
+======================================== */
 
 #cadastrar-animal form {
     display: grid;
@@ -104,12 +117,17 @@ footer {
     border-radius: 6px;
     font-family: Arial, sans-serif;
     font-size: 16px;
+    color: #243746;
     background-color: white;
+    transition: border-color 0.2s;
 }
 
 #cadastrar-animal textarea {
     min-height: 90px;
+    resize: vertical;
 }
+
+/* Aparencia dos campos em foco */
 
 #cadastrar-animal input:focus,
 #cadastrar-animal select:focus,
@@ -117,6 +135,16 @@ footer {
     outline: 2px solid #126b70;
     outline-offset: 2px;
 }
+
+/* Destaca os campos obrigatorios invalidos apos interacao */
+
+#cadastrar-animal input:not(:placeholder-shown):invalid:not(:focus) {
+    border-color: #c46b73;
+}
+
+/* ========================================
+   BOTAO PRINCIPAL DO CADASTRO
+======================================== */
 
 #cadastrar-animal button {
     grid-column: 2;
@@ -128,6 +156,7 @@ footer {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 #cadastrar-animal button:hover {
@@ -139,7 +168,76 @@ footer {
     outline-offset: 3px;
 }
 
-/* Modo de edicao */
+/* ========================================
+   INTEGRACAO COM API VIACEP
+======================================== */
+
+/* Campo de CEP */
+
+#cadastrar-animal #cep {
+    letter-spacing: 1px;
+}
+
+/* Botao exclusivo de consulta do CEP */
+
+#cadastrar-animal #buscar-cep {
+    grid-column: 2;
+    justify-self: start;
+    background-color: #236f88;
+    color: white;
+    padding: 11px 22px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#cadastrar-animal #buscar-cep:hover {
+    background-color: #18546a;
+}
+
+#cadastrar-animal #buscar-cep:focus-visible {
+    outline: 3px solid #236f88;
+    outline-offset: 3px;
+}
+
+/* Enquanto a consulta esta sendo realizada */
+
+#cadastrar-animal #buscar-cep:disabled {
+    background-color: #8da6ab;
+    cursor: wait;
+    opacity: 0.8;
+}
+
+/* Endereco preenchido automaticamente */
+
+#cadastrar-animal #endereco {
+    background-color: #eaf4f1;
+    color: #245b59;
+    border-color: #a5c9bf;
+    cursor: default;
+}
+
+/* Aparencia dos campos de contato e endereco */
+
+#cadastrar-animal #telefone,
+#cadastrar-animal #email,
+#cadastrar-animal #numero,
+#cadastrar-animal #complemento {
+    background-color: #ffffff;
+}
+
+/* Texto de exemplo dentro dos campos */
+
+#cadastrar-animal input::placeholder,
+#cadastrar-animal textarea::placeholder {
+    color: #788b93;
+    opacity: 1;
+}
+
+/* ========================================
+   MODO DE EDICAO
+======================================== */
 
 #cadastrar-animal.modo-edicao {
     border: 2px solid #126b70;
@@ -150,7 +248,17 @@ footer {
     color: #0e5559;
 }
 
-/* Pesquisa, filtros e ordenacao */
+#cadastrar-animal.modo-edicao button[type="submit"] {
+    background-color: #0e5559;
+}
+
+#cadastrar-animal.modo-edicao button[type="submit"]:hover {
+    background-color: #083d40;
+}
+
+/* ========================================
+   PESQUISA, FILTROS E ORDENACAO
+======================================== */
 
 #animais form {
     display: flex;
@@ -171,6 +279,7 @@ footer {
     border-radius: 6px;
     font-size: 16px;
     background-color: white;
+    color: #243746;
 }
 
 #animais input:focus,
@@ -197,7 +306,9 @@ footer {
     outline-offset: 3px;
 }
 
-/* Tabela de animais */
+/* ========================================
+   TABELA DE ANIMAIS
+======================================== */
 
 #animais table {
     width: 100%;
@@ -220,7 +331,9 @@ footer {
     background-color: #f3f7f6;
 }
 
-/* Botoes da tabela */
+/* ========================================
+   BOTOES DA TABELA
+======================================== */
 
 #animais td button {
     padding: 8px 12px;
@@ -241,7 +354,9 @@ footer {
     outline-offset: 2px;
 }
 
-/* Detalhes do animal */
+/* ========================================
+   DETALHES DO ANIMAL
+======================================== */
 
 #detalhes article {
     background-color: #f8fbfa;
@@ -275,6 +390,7 @@ footer {
     border-radius: 6px;
     cursor: pointer;
     margin-right: 10px;
+    margin-bottom: 8px;
 }
 
 #detalhes button:hover {
@@ -286,7 +402,9 @@ footer {
     outline-offset: 3px;
 }
 
-/* Mensagem do sistema */
+/* ========================================
+   MENSAGENS DO SISTEMA
+======================================== */
 
 .mensagem-sistema {
     background-color: #e1f3ed;
@@ -297,7 +415,9 @@ footer {
     margin-top: 15px;
 }
 
-/* Botoes de exclusao */
+/* ========================================
+   BOTOES DE EXCLUSAO
+======================================== */
 
 #animais td .botao-excluir,
 #detalhes .botao-excluir {
@@ -310,7 +430,9 @@ footer {
     background-color: #8f1b27;
 }
 
-/* Responsividade */
+/* ========================================
+   RESPONSIVIDADE - CELULAR E TABLET
+======================================== */
 
 @media (max-width: 768px) {
 
@@ -337,15 +459,42 @@ footer {
         font-size: 21px;
     }
 
+    /* Formulario passa para uma coluna */
+
     #cadastrar-animal form {
         grid-template-columns: 1fr;
         gap: 8px;
     }
 
+    #cadastrar-animal label {
+        margin-top: 8px;
+    }
+
+    #cadastrar-animal input,
+    #cadastrar-animal select,
+    #cadastrar-animal textarea {
+        width: 100%;
+    }
+
+    /* Botao principal ocupa toda a largura */
+
     #cadastrar-animal button {
         grid-column: 1;
         width: 100%;
+        margin-top: 8px;
     }
+
+    /* Botao Buscar CEP no celular */
+
+    #cadastrar-animal #buscar-cep {
+        grid-column: 1;
+        justify-self: stretch;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 8px;
+    }
+
+    /* Pesquisa e filtros */
 
     #animais form {
         flex-direction: column;
@@ -358,6 +507,8 @@ footer {
         width: 100%;
     }
 
+    /* Tabela com rolagem horizontal */
+
     #animais table {
         display: block;
         max-width: 100%;
@@ -368,6 +519,8 @@ footer {
     #animais td {
         white-space: nowrap;
     }
+
+    /* Imagem do animal */
 
     #detalhes img {
         max-width: 100%;

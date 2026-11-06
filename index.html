@@ -23,20 +23,34 @@
     </header>
 
     <main>
+
+        <!-- INÍCIO -->
+
         <section id="inicio">
             <h2>Bem-vindo ao VetSystem</h2>
+
             <p>
                 Sistema para gerenciamento de animais, prontuários,
                 histórico de atendimentos e informações veterinárias.
             </p>
         </section>
 
+        <!-- CADASTRO -->
+
         <section id="cadastrar-animal">
             <h2>Cadastrar Animal</h2>
 
+            <p><strong>Todos os campos são obrigatórios.</strong></p>
+
             <form id="form-cadastro">
+
                 <label for="nome">Nome do animal:</label>
-                <input type="text" id="nome" name="nome" required>
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    required
+                >
 
                 <label for="especie">Espécie:</label>
                 <select id="especie" name="especie" required>
@@ -47,39 +61,153 @@
                 </select>
 
                 <label for="raca">Raça:</label>
-                <input type="text" id="raca" name="raca" required>
+                <input
+                    type="text"
+                    id="raca"
+                    name="raca"
+                    required
+                >
 
                 <label for="idade">Idade:</label>
-                <input type="number" id="idade" name="idade" min="0" step="1" required>
+                <input
+                    type="number"
+                    id="idade"
+                    name="idade"
+                    min="0"
+                    step="1"
+                    required
+                >
 
                 <label for="cor">Coloração:</label>
-                <input type="text" id="cor" name="cor">
+                <input
+                    type="text"
+                    id="cor"
+                    name="cor"
+                    required
+                >
 
                 <label for="tutor">Nome do tutor:</label>
-                <input type="text" id="tutor" name="tutor" required>
+                <input
+                    type="text"
+                    id="tutor"
+                    name="tutor"
+                    required
+                >
+
+                <label for="telefone">Telefone do tutor:</label>
+                <input
+                    type="tel"
+                    id="telefone"
+                    name="telefone"
+                    placeholder="(31) 99999-9999"
+                    required
+                >
+
+                <label for="email">E-mail do tutor:</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="exemplo@email.com"
+                    required
+                >
+
+                <!-- ENDEREÇO E VIACEP -->
+
+                <label for="cep">CEP do tutor:</label>
+                <input
+                    type="text"
+                    id="cep"
+                    name="cep"
+                    maxlength="9"
+                    placeholder="00000-000"
+                    inputmode="numeric"
+                    required
+                >
+
+                <button type="button" id="buscar-cep">
+                    Buscar CEP
+                </button>
+
+                <label for="endereco">Endereço do tutor:</label>
+                <input
+                    type="text"
+                    id="endereco"
+                    name="endereco"
+                    placeholder="Consulte o CEP para preencher"
+                    readonly
+                    required
+                >
+
+                <label for="numero">Número:</label>
+                <input
+                    type="text"
+                    id="numero"
+                    name="numero"
+                    placeholder="Ex.: 150 ou S/N"
+                    required
+                >
+
+                <label for="complemento">Complemento:</label>
+                <input
+                    type="text"
+                    id="complemento"
+                    name="complemento"
+                    placeholder="Ex.: Apto. 201 ou Sem complemento"
+                    required
+                >
+
+                <!-- INFORMAÇÕES VETERINÁRIAS -->
 
                 <label for="vacinas">Histórico vacinal:</label>
-                <textarea id="vacinas" name="vacinas"></textarea>
+                <textarea
+                    id="vacinas"
+                    name="vacinas"
+                    required
+                ></textarea>
 
                 <label for="prontuario">Prontuário:</label>
-                <textarea id="prontuario" name="prontuario"></textarea>
+                <textarea
+                    id="prontuario"
+                    name="prontuario"
+                    required
+                ></textarea>
 
-                <button type="submit">Cadastrar Animal</button>
+                <button type="submit">
+                    Cadastrar Animal
+                </button>
+
             </form>
 
-            <p class="mensagem-sistema" id="mensagem" aria-live="polite">
-                Preencha o formulário para cadastrar um animal.
+            <p
+                class="mensagem-sistema"
+                id="mensagem"
+                aria-live="polite"
+            >
+                Preencha todos os campos para cadastrar um animal.
             </p>
+
         </section>
+
+        <!-- LISTA DE ANIMAIS -->
 
         <section id="animais">
             <h2>Animais Cadastrados</h2>
 
             <form>
-                <label for="pesquisa">Pesquisar:</label>
-                <input type="search" id="pesquisa" name="pesquisa" placeholder="Nome do animal ou tutor">
 
-                <label for="filtro-especie">Filtrar por espécie:</label>
+                <label for="pesquisa">Pesquisar:</label>
+                <input
+                    type="search"
+                    id="pesquisa"
+                    name="pesquisa"
+                    placeholder="Nome do animal ou tutor"
+                >
+
+                <label for="filtro-especie">
+                    Filtrar por espécie:
+                </label>
+
                 <select id="filtro-especie" name="filtro-especie">
                     <option value="todos">Todos</option>
                     <option value="cachorro">Cachorro</option>
@@ -88,15 +216,18 @@
                 </select>
 
                 <label for="ordenacao">Ordenar por:</label>
+
                 <select id="ordenacao" name="ordenacao">
                     <option value="nome">Nome</option>
                     <option value="idade">Idade</option>
                 </select>
 
                 <button type="button">Pesquisar</button>
+
             </form>
 
             <table>
+
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -110,50 +241,63 @@
 
                 <tbody id="lista-animais">
                 </tbody>
+
             </table>
+
         </section>
+
+        <!-- DETALHES -->
 
         <section id="detalhes">
             <h2>Detalhes do Animal</h2>
 
             <article>
-                <h3>Thor</h3>
-
-                <img src="assets/img/thor.jpg" alt="Foto do cachorro Thor">
-
-                <p><strong>Espécie:</strong> Cachorro</p>
-                <p><strong>Raça:</strong> Golden Retriever</p>
-                <p><strong>Idade:</strong> 5 anos</p>
-                <p><strong>Coloração:</strong> Dourado</p>
-                <p><strong>Tutor:</strong> João Silva</p>
-
-                <h4>Histórico Vacinal</h4>
-                <p>Vacinas em dia.</p>
-
-                <h4>Prontuário</h4>
-                <p>Animal saudável, sem alterações no último atendimento.</p>
-
-                <button type="button">Editar</button>
-                <button type="button" class="botao-excluir">Excluir</button>
+                <p>Selecione um animal para visualizar os detalhes.</p>
             </article>
+
         </section>
+
+        <!-- CLÍNICA -->
 
         <section id="clinica">
             <h2>Clínica</h2>
 
             <h3>Informações da Clínica</h3>
 
-            <p><strong>Nome:</strong> Clínica Veterinária VetSystem</p>
-            <p><strong>Endereço:</strong> Avenida Principal, 1000</p>
-            <p><strong>Telefone:</strong> (31) 3333-3333</p>
-            <p><strong>Horário de atendimento:</strong> Segunda a sexta, das 8h às 18h</p>
-
-            <h3>Localização</h3>
             <p>
-                Nesta área será exibido o mapa com a localização da clínica
-                e serviços veterinários próximos.
+                <strong>Nome:</strong>
+                Clínica Veterinária VetSystem
             </p>
+
+            <p>
+                <strong>Endereço:</strong>
+                Avenida Principal, 1000
+            </p>
+
+            <p>
+                <strong>Telefone:</strong>
+                (31) 3333-3333
+            </p>
+
+            <p>
+                <strong>Horário de atendimento:</strong>
+                Segunda a sexta, das 8h às 18h
+            </p>
+
+            <h3>Integração com API pública</h3>
+
+            <p>
+                O VetSystem utiliza a API ViaCEP para consultar
+                automaticamente o endereço dos tutores a partir do CEP.
+            </p>
+
+            <p>
+                O endereço consultado pode ser complementado com número
+                e complemento e fica armazenado junto ao cadastro do animal.
+            </p>
+
         </section>
+
     </main>
 
     <footer>
