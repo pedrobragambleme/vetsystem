@@ -1,4 +1,4 @@
-let animais = [
+const animaisIniciais = [
     {
         id: 1,
         nome: "Thor",
@@ -22,6 +22,26 @@ let animais = [
         prontuario: "Animal saudável."
     }
 ];
+
+let animais = animaisIniciais;
+
+try {
+    const dadosSalvos = localStorage.getItem("vetsystem_animais");
+
+    if (dadosSalvos !== null) {
+        const dados = JSON.parse(dadosSalvos);
+
+        if (Array.isArray(dados)) {
+            animais = dados;
+        }
+    }
+} catch (erro) {
+    console.error("Erro ao carregar os animais:", erro);
+}
+
+function salvarAnimais() {
+    localStorage.setItem("vetsystem_animais", JSON.stringify(animais));
+}
 
 let idEmEdicao = null;
 
@@ -154,7 +174,7 @@ function mostrarDetalhes(id, mover = false) {
     titulo.textContent = animal.nome;
     artigo.appendChild(titulo);
 
-    if (animal.id === 1) {
+    if (animal.id === 1 && animal.nome === "Thor") {
         const imagem = document.createElement("img");
         imagem.src = "assets/img/thor.jpg";
         imagem.alt = "Foto do cachorro Thor";
@@ -273,6 +293,8 @@ function excluirAnimal(id) {
         return item.id !== id;
     });
 
+    salvarAnimais();
+
     if (idEmEdicao === id) {
         idEmEdicao = null;
         formulario.reset();
@@ -356,6 +378,8 @@ formulario.addEventListener("submit", function (evento) {
         mensagem.textContent = "Animal atualizado com sucesso!";
     }
 
+    salvarAnimais();
+
     idEmEdicao = null;
     botaoCadastro.textContent = "Cadastrar Animal";
     tituloCadastro.textContent = "Cadastrar Animal";
@@ -381,4 +405,9 @@ document.querySelector("#animais form").addEventListener("submit", function (eve
 document.querySelector("#animais form button").addEventListener("click", listarAnimais);
 
 listarAnimais();
-mostrarDetalhes(1);
+
+if (animais.length > 0) {
+    mostrarDetalhes(animais[0].id);
+} else {
+    mostrarDetalhes(null);
+}
